@@ -1,0 +1,1 @@
+web: gunicorn grouding_design_project.wsgi --log-file -

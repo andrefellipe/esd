@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dimensionamento de Malhas de Aterramento Retangulares</title>
+</head>
+
+<body>
+
+    <h1>Dimensionamento de Malhas de Aterramento Retangulares</h1>
+    
+    <form>
+        <hr>
+
+        <label for="rod-depth">Profundidade da haste (m):</label>
+        <input type="number" id="rod-depth" name="rod-depth" min="0"><br>
+
+        <strong>Medições</strong><br>
+        <small>Separar os valores das resistências medidas usando vírgulas.</small><br>
+
+        <div>
+            <input type="button" value="Adicionar medição" id="add" />
+            <input type="button" value="Remover medições" id="remove" />
+            <div id="container">&nbsp;</div>
+        </div>
+
+        <hr>
+
+        <label for="current-phase-ground">Corrente fase-terra (A):</label>
+        <input type="number" id="current-phase-ground" name="current-phase-ground" min="0"><br>
+
+        <label for="current-grid">Corrente na malha (A):</label>
+        <input type="number" id="current-grid" name="current-grid" min="0"><br>
+
+        <label for="defect-duration">Duração da falta (s):</label>
+        <input type="number" id="defect-duration" name="defect-duration" min="0"><br>
+
+        <label for="grid-width">Largura da malha (m):</label>
+        <input type="number" id="grid-width" name="grid-width" min="0"><br>
+
+        <label for="grid-length">Comprimento da malha (m):</label>
+        <input type="number" id="grid-length" name="grid-length" min="0"><br>
+
+        <label for="ea">Espaçamento entre condutores no eixo X (m):</label>
+        <input type="number" id="ea" name="ea" min="0"><br>
+
+        <label for="eb">Espaçamento entre condutores no eixo Y (m):</label>
+        <input type="number" id="eb" name="eb" min="0"><br>
+
+        <label for="grid-height">Profundidade da malha (m):</label>
+        <input type="number" id="grid-height" name="grid-height" min="0"><br>
+
+        <label for="rod-height">Altura da haste (m):</label>
+        <input type="number" id="rod-height" name="rod-height" min="0"><br>
+
+        <hr>
+
+        <label for="gravel-resistivity">Resistividade da brita (&Omega; x m):</label>
+        <input type="number" id="gravel-resistivity" name="gravel-resistivity" min="0"><br>
+
+        <label for="gravel-height">Altura da camada de brita (m):</label>
+        <input type="number" id="gravel-height" name="gravel-height" min="0"><br>
+
+        <small>Se não houver camada de brita, insira 0 nos dois campos acima.</small><br>
+
+        <hr>
+
+        <input type="button" value="Testar malha de aterramento" id="test_grid" />
+
+        <hr>
+
+        <label for="spacing">Espaçamentos (m):</label>
+        <input type="text" id="spacing" name="spacing" size="50" readonly><br>
+
+        <label for="resistivities">Resistividades (&Omega;):</label>
+        <input type="text" id="resistivities" name="resistivities" size="50" readonly><br>
+
+        <label for="first-layer-resistivity">Resistividade da primeira camada (&Omega; x m):</label>
+        <input type="text" id="first-layer-resistivity" name="first-layer-resistivity" readonly><br>
+
+        <label for="first-layer-depth">Profundidade da primeira camada (m):</label>
+        <input type="text" id="first-layer-depth" name="first-layer-depth" readonly><br>
+
+        <label for="second-layer-resistivity">Resistividade da segunda camada (&Omega; x m):</label>
+        <input type="text" id="second-layer-resistivity" name="second-layer-resistivity" readonly><br>
+
+        <br>
+
+        <label for="is-grid-safe">Resultado:</label>
+        <input type="text" id="is-grid-safe" name="is-grid-safe" size="50" readonly><br>
+
+        <label for="number-of-conductors-x-axis">Número de condutores no eixo X:</label>
+        <input type="text" id="number-of-conductors-x-axis" name="number-of-conductors-x-axis" readonly><br>
+
+        <label for="conductor-spacing-x-axis">Espaçamento entre condutores no eixo X (m):</label>
+        <input type="text" id="conductor-spacing-x-axis" name="conductor-spacing-x-axis" readonly><br>
+
+        <label for="number-of-conductors-y-axis">Número de condutores no eixo Y:</label>
+        <input type="text" id="number-of-conductors-y-axis" name="number-of-conductors-y-axis" readonly><br>
+
+        <label for="conductor-spacing-y-axis">Espaçamento entre condutores no eixo Y (m):</label>
+        <input type="text" id="conductor-spacing-y-axis" name="conductor-spacing-y-axis" readonly><br>
+
+        <label for="grid-conductors-gauge">Bitola dos condutores da malha (m²):</label>
+        <input type="text" id="grid-conductors-gauge" name="grid-conductors-gauge" readonly><br>
+
+        <label for="connection-cable-gauge">Bitola do cabo de ligação (m²):</label>
+        <input type="text" id="connection-cable-gauge" name="connection-cable-gauge" readonly><br>
+
+        <label for="total-length">Comprimento total de cabo (m):</label>
+        <input type="text" id="total-length" name="total-length" readonly><br>
+
+        <label for="number-of-rods">Número de hastes:</label>
+        <input type="text" id="number-of-rods" name="number-of-rods" readonly><br>
+
+        <label for="maximum-touch-voltage">Potencial de toque máximo (V):</label>
+        <input type="text" id="maximum-touch-voltage" name="maximum-touch-voltage" readonly><br>
+
+        <label for="maximum-step-voltage">Potencial de passo máximo (V):</label>
+        <input type="text" id="maximum-step-voltage" name="maximum-step-voltage" readonly><br>
+
+        <label for="grid-touch-voltage">Potencial de toque na malha (V):</label>
+        <input type="text" id="grid-touch-voltage" name="grid-touch-voltage" readonly><br>
+
+        <label for="grid-step-voltage">Potencial de passo na malha (V):</label>
+        <input type="text" id="grid-step-voltage" name="grid-step-voltage" readonly><br>
+
+        <label for="fence-touch-voltage">Potencial de toque na cerca (V):</label>
+        <input type="text" id="fence-touch-voltage" name="fence-touch-voltage" readonly><br>
+
+        <label for="grid-resistance">Resistência da malha (&Omega;):</label>
+        <input type="text" id="grid-resistance" name="grid-resistance" readonly><br>
+
+    </form>
+
+    <canvas id="stratification_chart"></canvas>
+
+    <canvas id="resistivities_chart"></canvas>
+
+</body>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="script.js"></script>
+
+</html>
